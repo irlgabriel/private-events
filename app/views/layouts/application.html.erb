@@ -18,17 +18,17 @@
       <p class="alert notification mb-0 bg-danger text-white p-2 text-center"><%= alert %></p>
     <% end %>
 
-    <div class="bg-dark p-2 row mb-3">
+    <div class="bg-dark p-3 row mb-3 mx-0">
       <div class="col"></div>
-      <div class="col text-center align-items-center">
+      <div class="col text-center d-flex justify-content-center align-items-center">
         <%= link_to 'Private-Events', '/', class: 'text-white'%>
       </div>
       <div class="col d-flex justify-content-end">
         <% if user_signed_in? %>
-          <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+          <%= link_to "Sign Out", destroy_user_session_path, :method => :delete, class: 'btn btn-danger'%>
         <% else %>
-          <%= link_to "Sign in", new_user_session_path, class: "p-2" %>
-          <%= link_to "Sign up", new_user_registration_path, class: "p-2" %>
+          <%= link_to "Sign in", new_user_session_path, class: "p-2 btn btn-secondary mx-2" %>
+          <%= link_to "Sign up", new_user_registration_path, class: "p-2 btn btn-success mx-2" %>
         <% end %>
       </div>
     </div>

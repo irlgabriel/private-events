@@ -1,0 +1,11 @@
+
+<%= simple_form_for @event do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :date, as: :date%>
+  <%= f.input :location %>
+  <%= f.input :description %>
+  
+
+  <%= f.button :submit, "Enter", class:"btn btn-success px-3 py-2" %>
+<% end%>
