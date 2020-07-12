@@ -1,0 +1,14 @@
+<%= link_to 'Back to Events', events_path, class:"btn btn-info ml-4"%>
+<div class="container text-center">
+  
+  <div class="card my-4">
+    <div class="card-header">
+      <p><%= @event.date %><p>
+      <h6 class="card-info text-info text-right">Created by <%= @event.creator.username %></h6>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><%= @event.location %></h5>
+      <p class="card-text"><%= @event.description %></p>
+    </div>
+  </div>
+</div>

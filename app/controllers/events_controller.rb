@@ -2,8 +2,8 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    
     @events = Event.all.order("created_at DESC")
+    byebug
   end
   
   def new
@@ -20,11 +20,13 @@ class EventsController < ApplicationController
   end
 
   def show
+    @event = Event.find(params[:id])
   end
 
   def update
+    @event = Event.find(params[:id])
     if @event.update(event_params)
-      redirect_to @event
+      redirect_to events_path
     else
       render :edit
     end
