@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 
   def index
     
-    @events = Event.all
+    @events = Event.all.order("created_at DESC")
   end
   
   def new
@@ -12,9 +12,8 @@ class EventsController < ApplicationController
   
   def create
     @event = current_user.created_events.build(event_params)
-    byebug
     if @event.save
-      redirect_to @events
+      redirect_to events_path
     else
       render :new
     end
@@ -32,8 +31,13 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    @event = Event.find(params[:id])
     @event.destroy
-    redirect_to @events
+    redirect_to events_path
+  end
+
+  def edit
+    @event = Event.find(params[:id])
   end
 
   private

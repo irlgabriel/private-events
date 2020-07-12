@@ -1,12 +1,17 @@
+<div class="container text-center">
+  <% @events.each do |event| %>
 
-<%= @events.each do |event| %>
-
-  <div class="card" style="width: 40%;">
-    <div class="card-body">
-      <h5 class="card-title"><%= event.description %></h5>
-      <p class="card-text"><%= event.location %></p>
-      
+    <div class="card my-2 mx-auto" style="width: 40%;">
+      <div class="card-header">Date: <%= event.date %></div>
+      <div class="card-body">
+        <h5 class="card-title"><%= event.location %></h5>
+        <p class="card-text"><%= event.description %></p>
+        <%= link_to 'Edit', edit_event_path(event), class:"text-white btn btn-warning px-4"  if current_user == event.creator %>
+        <%= link_to 'Delete', event, method: :delete, data: {confirm: "Are you sure you want to delete this event?"}, class:"btn btn-danger" if current_user == event.creator %>
+      </div>
     </div>
-  </div>
 
-<% end %>
+  <% end %>
+
+
+</div>

@@ -1,5 +1,5 @@
 class AddCreatorIdToEvents < ActiveRecord::Migration[6.0]
   def change
-    add_reference :events, :user, foreign_key: 'creator_id'
+    add_reference :events, :creator
   end
 end

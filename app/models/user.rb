@@ -3,6 +3,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :created_events, class_name: "Event"
-  has_many :attented_events, class_name: "Event"
+  has_many :created_events, class_name: "Event", foreign_key: "creator_id"
+  has_many :attended_events, class_name: "Event"
 end
