@@ -3,10 +3,11 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all.order("created_at DESC")
+    #byebug
   end
   
   def new
-    @event = Event.new
+    @event = current_user.created_events.new
   end
   
   def create
