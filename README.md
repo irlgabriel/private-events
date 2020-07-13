@@ -6,7 +6,5 @@ This is a project part of The Odin Project!
 
 #Users can now Sign In, Log out and edit their accounts.
 
-#Remodeled Event Model!
 
-
-!!!NEED to figure out associations now!
+!!!NEED to figure out associations now! (DONE!)
