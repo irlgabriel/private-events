@@ -11,4 +11,11 @@
       <p class="card-text"><%= @event.description %></p>
     </div>
   </div>
+  <ul class="text-left list-unstyled">
+    <h3 class="text-info">Currently <%= @event.attendees.count %> people attending: </h3>
+    <% @event.attendees.each do |attendee| #byebug%>
+      <li><%= link_to "#{attendee.username}", user_path(attendee) %></li>
+    <% end %>
+    
+  </ul>
 </div>

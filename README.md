@@ -6,5 +6,14 @@ This is a project part of The Odin Project!
 
 #Users can now Sign In, Log out and edit their accounts.
 
+#Users can see their profile and what events they are attending
 
-!!!NEED to figure out associations now! (DONE!)
+(!) Need to figure out:
+  #letting users join and unjoin events
+  #make event's date show how much time is left until the date rather than the date itself (eg: 6 days, 5 hours, 3 minutes instead of 2020/07/29 00:00:00 UTC) 
+
+
+
+
+
+
