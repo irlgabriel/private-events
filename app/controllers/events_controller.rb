@@ -42,6 +42,16 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def join_event
+    @user = User.find(params[:user_id])
+    @event = Event.find(params[:event_id])
+    @event.attendees.push(@user)
+    #byebug
+  end
+
+  def unjoin_event
+
+  end
   private
 
   def event_params

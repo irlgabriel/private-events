@@ -7,9 +7,9 @@
         <h5 class="card-title"><%= link_to "#{event.location}", event %></h5>
         <p class="card-text"><%= event.description %></p>       
         <% if event.attendees.include?(current_user) %>
-          <%= link_to 'Unjoin this event', '/', class:"btn btn-danger p-3 d-block my-2"%>
+          <%= button_to 'Unjoin this event', {action: "unjoin_event", :event_in => event.id, :user_id => @user.id }, class:"btn btn-danger p-3 d-block mx-auto my-2" %>
           <% else %>
-          <%= link_to 'Join this event', '/', class:"btn btn-info p-3 d-block my-2"%>
+          <%= button_to 'Join this event', {action: "join_event", :event_id => event.id, :user_id => @user.id }, class:"btn btn-info p-3 mx-auto d-block my-2" %>
         <% end %>
         <div class="text-right">
           <%= link_to 'Edit', edit_event_path(event), class:"text-white btn btn-warning px-4"  if current_user == event.creator %>
