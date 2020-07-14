@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  include ActionView::Helpers::DateHelper
+
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -43,15 +45,23 @@ class EventsController < ApplicationController
   end
 
   def join_event
-    @user = User.find(params[:user_id])
+    @events = Event.all
+    @user = current_user
     @event = Event.find(params[:event_id])
-    @event.attendees.push(@user)
-    #byebug
+    @event.attendees.push(@user) if !@event.attendees.include?(@user)
+    render 'index'
   end
 
   def unjoin_event
-
+    @events = Event.all
+    @user = current_user
+    @event = Event.find(params[:event_id])
+    @event.attendees.delete(@user)
+    render 'index'
   end
+
+  
+
   private
 
   def event_params

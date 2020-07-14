@@ -4,7 +4,8 @@
   <div class="card my-4">
     <div class="card-header">
       <p><%= @event.date %><p>
-      <h6 class="card-info text-info text-right">Created by <%= @event.creator.username %></h6>
+      <p class="text-success h3"><%= distance_of_time_in_words(@event.date, Time.now, include_seconds: true).titleize %> from now</p>
+      <h6 class="card-info text-info text-right">Created by <%= link_to "#{@event.creator.username}", @event.creator %></h6>
     </div>
     <div class="card-body">
       <h5 class="card-title"><%= @event.location %></h5>
@@ -13,7 +14,7 @@
   </div>
   <ul class="text-left list-unstyled">
     <h3 class="text-info">Currently <%= @event.attendees.count %> people attending: </h3>
-    <% @event.attendees.each do |attendee| #byebug%>
+    <% @event.attendees.each do |attendee| %>
       <li><%= link_to "#{attendee.username}", user_path(attendee) %></li>
     <% end %>
     

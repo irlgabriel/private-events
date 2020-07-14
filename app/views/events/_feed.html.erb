@@ -2,12 +2,12 @@
   <% @events.each do |event| %>
   <% @user = event.creator %>
     <div class="card my-2 mx-auto" style="width: 60%;">
-      <div class="card-header">Date: <%= event.date %></div>
+      <div class="card-header"><%= distance_of_time_in_words(event.date, Time.now, include_seconds: true).titleize %> from now</div>
       <div class="card-body">
         <h5 class="card-title"><%= link_to "#{event.location}", event %></h5>
         <p class="card-text"><%= event.description %></p>       
         <% if event.attendees.include?(current_user) %>
-          <%= button_to 'Unjoin this event', {action: "unjoin_event", :event_in => event.id, :user_id => @user.id }, class:"btn btn-danger p-3 d-block mx-auto my-2" %>
+          <%= button_to 'Unjoin this event', {action: "unjoin_event", :event_id => event.id, :user_id => @user.id }, class:"btn btn-danger p-3 d-block mx-auto my-2" %>
           <% else %>
           <%= button_to 'Join this event', {action: "join_event", :event_id => event.id, :user_id => @user.id }, class:"btn btn-info p-3 mx-auto d-block my-2" %>
         <% end %>
@@ -15,7 +15,7 @@
           <%= link_to 'Edit', edit_event_path(event), class:"text-white btn btn-warning px-4"  if current_user == event.creator %>
           <%= link_to 'Delete', event, method: :delete, data: {confirm: "Are you sure you want to delete this event?"}, class:"btn btn-danger" if current_user == event.creator %>
         </div>
-        <h5 class="text-primary text-right mt-3"> <%= link_to " Currently attending:#{event.attendees.count}", '/', class: "text-right mt-2" %></h5>
+        <h5 class="text-primary text-right mt-3"> <%= link_to " Currently attending:#{event.attendees.count}", event_path(event), class: "text-right mt-2" %></h5>
       </div>
     </div>
 

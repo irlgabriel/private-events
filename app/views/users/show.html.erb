@@ -1,7 +1,7 @@
 <div class="container">
   <h2 class="text-center text-primary"><%= @user.username %></h2>
   <ul class="list-unstyled text-left">
-    <h3>Attending <%=  @user.attended_events.count %> events: </h3>
+    <h3>Future events: <%=  @user.attended_events.count %></h3>
     <% @user.attended_events.each do |event| %>
       <li class="h5 ml-2 text-success"><%= link_to "#{event.location}", event_path(event) %></li>  
     <% end %>
