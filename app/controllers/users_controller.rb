@@ -4,8 +4,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def self.upcoming_events
-    @events = @user.attended_events
-    
+  def self.past_events
+    @user.attended_events.select { |ev| Time.now > ev.date }
   end
+
+  def self.future_events
+    @user.attended_events.select { |ev| Time.now < ev.date }
+  end
+
 end
