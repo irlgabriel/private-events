@@ -1,7 +1,12 @@
 class EventsController < ApplicationController
   include ActionView::Helpers::DateHelper
 
+
+
+
   before_action :authenticate_user!, except: [:index, :show]
+
+  
 
   def index
     @events = Event.all.order("created_at DESC")
@@ -28,7 +33,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     if @event.update(event_params)
-      redirect_to events_path
+      red3irect_to events_path
     else
       render :edit
     end
