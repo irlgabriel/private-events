@@ -1,23 +1,23 @@
 
 <div class="container">
-  <h2 class="text-center text-primary mr-5"><%= @user.username %></h2>
-  <div class="row">
+  <h1 class="text-center text-primary mr-5 my-5"><%= @user.username %></h1>
+  <div class="row border border-primary py-3">
     <div class="container col">
       <ul class="list-unstyled text-left">
-        <h3>Future events: <%=  Event.future.count %></h3>
-        <% @user.future_events.each do |event| %>
+        <h3>Upcoming events: <%=  @events.upcoming.count %></h3>
+        <% @events.upcoming.each do |event| %>
           <li class="h5 ml-2 text-success"><%= link_to "#{event.location}", event_path(event) %></li>  
-        <% end%>
+        <% end %>
         
       </ul> 
     </div>
 
     <div class="container col">
       <ul class="list-unstyled text-left">
-        <h3>Past events: <%=  Event.past.count %></h3>
-        <% @user.past_events.each do |event| %>
+        <h3>Past events: <%= @events.past.count %></h3>
+        <% @events.past.each do |event| %>
           <li class="h5 ml-2 text-success"><%= link_to "#{event.location}", event_path(event) %></li>  
-        <% end%>
+        <% end %>
         
       </ul>
     </div>

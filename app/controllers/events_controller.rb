@@ -61,6 +61,8 @@ class EventsController < ApplicationController
     @events = Event.all
     @user = current_user
     @event = Event.find(params[:event_id])
+
+    @user.attended_events.delete(@event)
     @event.attendees.delete(@user)
     render 'index'
   end
